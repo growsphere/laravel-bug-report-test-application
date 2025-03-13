@@ -14,6 +14,11 @@ reset between tests.
 ## Issue 1: Schedule is not instantiated correctly after the first test.
 There are two tests in the ScheduleTest.php file, but their content is identical.
 All the tests do is get the Schedule from the app and assert that the count of the events is 1.
+```
+    $schedule = app(Schedule::class);
+    $events = $schedule->events();
+    $this->assertCount(1, $events);
+```
 In the bootstrap/app.php file, the Schedule is configured with one simple Hello World event.
 ```
     ->withSchedule(function (Schedule $schedule) {
@@ -22,7 +27,7 @@ In the bootstrap/app.php file, the Schedule is configured with one simple Hello 
         })->hourly();
     })
 ```
-**Current behavior:**
+**Current test behavior:**
 * When run in isolation, both tests pass. 
 * When run together, the second test fails. 
 
@@ -43,7 +48,8 @@ As it is now, both tests succeed when run together or in isolation. But changing
 
     -> both tests fail (together or isolated), because they are not instantiated with the mock.
 * In `SayHelloCommandTest.php`, uncomment the line that calls  `$this->seed()` the setUp() method.
-  AND change `RefreshDatabase` to `LazilyRefreshDatabase` in the tests/TestCase.php Class.
+
+  AND change `RefreshDatabase` to `LazilyRefreshDatabase` in the `tests/TestCase.php` Class.
     
     -> only the second test running fails, because only the second test is not instantiated with the mock.
 
