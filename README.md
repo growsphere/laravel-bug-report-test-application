@@ -4,7 +4,12 @@
 * sqlite 3.37.2
 * php 8.2.27
 
-This project is a fresh installation of laravel. Only classes needed to demonstrate the issues have been added.
+This project is a fresh installation of laravel. Only the `bootstrap/app.php` has been modified to contain one scheduled event,
+and the following classes - needed to demonstrate the issues - have been added.
+* [SayHelloCommand.php](app/Console/Commands/SayHelloCommand.php)
+* [ClassToBeInjected.php](app/BugReport/ClassToBeInjected.php)
+* [ScheduleTest.php](tests/Feature/ScheduleTest.php)
+* [SayHelloCommandTest.php](tests/Feature/SayHelloCommandTest.php)
 
 ## Issues
 There seem to be substantial differences in the application when the context is a single phpunit test (or the first test
