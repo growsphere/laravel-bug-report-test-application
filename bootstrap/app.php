@@ -18,10 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withSchedule(function (Schedule $schedule) {
-        // Log hello world hourly
         $schedule->call(function () {
             logger()->info('Hello World');
         })->hourly();
-
     })
     ->create();
