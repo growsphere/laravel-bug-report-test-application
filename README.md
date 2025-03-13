@@ -1,8 +1,10 @@
 # Bug Report
 ## Project Setup
-Laravel 12.2.0
-sqlite 3.37.2
-php 8.2.27
+* Laravel 12.2.0
+* sqlite 3.37.2
+* php 8.2.27
+
+This project is a fresh installation of laravel. Only classes needed to demonstrate the issues have been added.
 
 ## Issues
 There seem to be substantial differences in the application when the context is a single phpunit test (or the first test
